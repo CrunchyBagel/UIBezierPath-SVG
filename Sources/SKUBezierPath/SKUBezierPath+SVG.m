@@ -451,33 +451,3 @@ typedef enum : NSInteger {
 }
 
 @end
-
-#if TARGET_OS_IPHONE
-#else
-@implementation NSBezierPath (AddQuads)
-
--(void)addQuadCurveToPoint:(CGPoint)point controlPoint:(CGPoint)controlPoint {
-    
-    CGPoint qp0, qp1, qp2, cp0, cp1, cp2, cp3;
-    CGFloat twoThree = 0.6666666666666666;
-    
-    qp0 = [self currentPoint];
-    qp1 = controlPoint;
-    qp2 = point;
-    
-    
-    cp0 = qp0;
-    cp1 = CGPointMake((qp0.x + twoThree * (qp1.x - qp0.x)), (qp0.y + twoThree * (qp1.y - qp0.y)));
-    cp2 = CGPointMake((qp2.x + twoThree * (qp1.x - qp2.x)), (qp2.y + twoThree * (qp1.y - qp2.y)));
-    
-    cp3 = qp2;
-    
-    [self curveToPoint:cp3 controlPoint1:cp1 controlPoint2:cp2];
-    
-    
-}
-
-
-@end
-
-#endif

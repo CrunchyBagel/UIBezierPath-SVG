@@ -7,18 +7,11 @@
 //
 //	Modified by Michael Redig 9/28/14
 
-#if TARGET_OS_IPHONE
 #define SKUBezierPath UIBezierPath
 #define addLineToPointSKU addLineToPoint
 #define addCurveToPointSKU addCurveToPoint
-#else
-#define SKUBezierPath NSBezierPath
-#define addLineToPointSKU lineToPoint
-#define addCurveToPointSKU curveToPoint
 #import <Foundation/Foundation.h>
-#import <Cocoa/Cocoa.h>
-#endif
-
+#import <UIKit/UIKit.h>
 
 @interface SKUBezierPath (SVG)
 
@@ -27,11 +20,3 @@
 
 @end
 
-#if TARGET_OS_IPHONE
-#else
-@interface NSBezierPath (AddQuads)
-
--(void)addQuadCurveToPoint:(CGPoint)point controlPoint:(CGPoint)controlPoint;
-
-@end
-#endif
