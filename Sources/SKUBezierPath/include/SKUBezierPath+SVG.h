@@ -10,13 +10,23 @@
 #define SKUBezierPath UIBezierPath
 #define addLineToPointSKU addLineToPoint
 #define addCurveToPointSKU addCurveToPoint
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+
+
 
 @interface SKUBezierPath (SVG)
 
-- (void)addPathFromSVGString:(NSString *)svgString;
-+ (SKUBezierPath *)bezierPathWithSVGString:(NSString *)svgString;
+- (void)addPathFromSVGString:(NSString *)svgString factoryIdentifier:(NSString*) identifier;
++ (SKUBezierPath *)bezierPathWithSVGString:(NSString *)svgString factoryIdentifier:(NSString*) identifier;
 
 @end
+
+#if TARGET_OS_IPHONE
+#else
+@interface NSBezierPath (AddQuads)
+
+-(void)addQuadCurveToPoint:(CGPoint)point controlPoint:(CGPoint)controlPoint;
+
+@end
+#endif
 
