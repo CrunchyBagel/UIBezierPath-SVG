@@ -7,10 +7,17 @@
 //
 //	Modified by Michael Redig 9/28/14
 
+#if TARGET_OS_PHONE
 #define SKUBezierPath UIBezierPath
 #define addLineToPointSKU addLineToPoint
 #define addCurveToPointSKU addCurveToPoint
 #import <UIKit/UIKit.h>
+#else
+#define SKUBezierPath NSBezierPath
+#define addLineToPointSKU lineToPoint
+#define addCurveToPointSKU curveToPoint
+#import <AppKit/AppKit.h>
+#endif
 
 
 

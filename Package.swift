@@ -4,7 +4,8 @@ import PackageDescription
 let package = Package(
     name: "SKUBezierPath",
     platforms: [
-        .iOS(.v8)
+        .iOS(.v8),
+        .macOS(.v10_14)
     ],
     products: [
         .library(name: "SKUBezierPath", targets: ["SKUBezierPath"])
